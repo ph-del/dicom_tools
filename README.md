@@ -6,7 +6,7 @@ Occasionally I need to overwrite a radiographic mark on a mislabeled x-ray. Typi
 
 ### requirements
 
-python 3.9
+python 3.9\n
 library: pydicom (https://pydicom.github.io/)
 
 ### usage
