@@ -11,9 +11,9 @@ library: pydicom (https://pydicom.github.io/)
 ### usage
 start from file browser by doubleclick:\
 console will ask you:
-- path to input file [str "C:\dir\dicomfile"]
-- image area specified by coordinates (left top  x1,y1 right bottom x2, y2) that will be overwritten [int,int,int,int x1,y1,x2,y2]
-- new mark or text (if you want empty text insert one space) [str "new mark"]
+- path to input file ["C:\dir\dicomfile" (str) ]
+- image area specified by coordinates (left top  x1,y1 right bottom x2, y2) that will be overwritten [x1,y1,x2,y2 (int,int,int,int)]
+- new mark or text (if you want empty text insert one space) ["new mark" (str)]
 
 or you can start from cmd with arguments:
 ```
