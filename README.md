@@ -25,7 +25,9 @@ optional arguments:
   -c CORD, --cord CORD  coordinates x1,y1,x2,y2 (x1,y1 top left - x2,y2 bottom right)
   -t TEXT, --text TEXT  text to insert into the dicom image
 ```
-Program makes copy of original dicom file and overwrite specified area of pixels with new mark or text and save new dicom file to current working directory. Program logs its activity to a file pixel_edit.log that is created in the directory from which the program was started. The marker font size is automatically adjusted to the width of the selected area according to the coordinates.
+Program makes copy of original dicom file and overwrite specified area of pixels with new mark or text and save new dicom file to current working directory.\
+Program logs its activity to a file pixel_edit.log that is created in the directory which the program was started from.\
+The marker font size is automatically adjusted to the width of the selected area according to the coordinates.
 
 ### todo
 this program suits my purposes but could be improved:
