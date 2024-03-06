@@ -2,12 +2,12 @@
 My dicom tools that I created to work with dicom images.
 
 ### content:
-"""
-##### 1. [pixel_edit](#pixel_edit)
-Edit wrong labels in dicom picture
-##### 2. [gif_from_jpg](#gif_from_jpg)
-Create gif from jpg
-"""
+
+#### 1. [pixel_edit](#pixel_edit)
+ - Edit wrong labels in dicom picture
+#### 2. [gif_from_jpg](#gif_from_jpg)
+ - Create gif from jpg
+
 
 ## pixel_edit.py (overwrite mislabeled x-ray)<a name="pixel_edit"></a>
 Occasionally I need to overwrite a radiographic mark on a mislabeled x-ray. Typically, when the image has already been deleted from the modality it was created on and I cannot correct the radiographic mark directly on the modality.
