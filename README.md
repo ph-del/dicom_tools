@@ -44,7 +44,7 @@ this program suits my purposes but could be improved:
 - custimizable SOPInstanceUID
 
 ## gif_from_jpg<a name="gif_from_jpg"></a>
-Program to create gif file from jpg files. Sometime I need create gif file from jpg files for powerpoint presentation. I usually used tool https://gifmaker.me/, but this tool is limited to 300 jpg files. So I created program, which allow me create gif from unlimited jpg files (in program is condition to max.2000 jpg, but it can be overwitten)  
+Program to create gif file from jpg files. Sometime I need create gif file from jpg files for powerpoint presentation. I usually used tool https://gifmaker.me/, but this tool is limited to 300 jpg files. So I created program, which allow me create gif from unlimited jpg files (in program is condition to max. 2000 jpg, but it can be overwitten)  
 
 ### requirements
 python 3.9 \
