@@ -35,6 +35,29 @@ this program suits my purposes but could be improved:
 - customizable colors
 - custimizable SOPInstanceUID
 
-    
+##gif_from_jpg
+Program to create gif file from jpg files. Sometime I need create gif file from jpg files for powerpoint presentation. I usually used tool https://gifmaker.me/, but this tool is limited to 300 jpg files. So I created program, which allow me create gif from unlimited jpg files (in program is condition to max.2000 jpg, but it can be overwitten)  
+
+### requirements
+python 3.9 \
+library: PIL
+
+### usage
+start from file browser by doubleclick:\
+console will ask you:
+- path to directory with jpg files ["C:\dir\jpg_files" (str) ]
+- animation speed milliseconds per frame [x (int)]
+
+or you can start from cmd with arguments:
+```
+usage: gif_from_jpg.py [-h] [-d DIR] [-s SPEED]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -d DIR, --dir DIRECTORY  path to directory with jpg files
+  -s SPEED, --speed SPEED  animation speed milliseconds per frame
+```
+Program create gif file with name first jpg file in directory. Jpg files names must be ordered alphabetically, but program recognize no alphabetical number format 1,10,100,2,3, which is generated from our system MARIA Pacs.
+
 
 
