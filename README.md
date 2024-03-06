@@ -65,7 +65,7 @@ optional arguments:
   -d DIR, --dir DIRECTORY  path to directory with jpg files
   -s SPEED, --speed SPEED  animation speed milliseconds per frame
 ```
-Program create gif file with name first jpg file in directory. Jpg files names must be ordered alphabetically, but program recognize no alphabetical number format 1,10,100,2,3, which is generated from our system MARIA Pacs.
+Program create gif file with name first jpg file in directory. Jpg files names must be ordered alphabetically, but program also recognize bad alphabetical number format eg. 1,10,100,2,3, which is generated from our system MARIA Pacs.
 
 
 
