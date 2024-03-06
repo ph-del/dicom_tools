@@ -4,9 +4,9 @@ My dicom tools that I created to work with dicom images.
 ### content:
 
 #### 1. [pixel_edit](#pixel_edit)
- - Edit wrong labels in dicom picture
+Edit wrong labels in dicom picture
 #### 2. [gif_from_jpg](#gif_from_jpg)
- - Create gif from jpg
+Create gif from jpg
 
 
 ## pixel_edit.py (overwrite mislabeled x-ray)<a name="pixel_edit"></a>
