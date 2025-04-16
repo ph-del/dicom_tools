@@ -3,6 +3,7 @@
 #Program makes copy of original dicom file and overwrite specified area of pixels with new text mark and save new dicom file to current working directory. 
 #pavel.honz@gmail.com
 #10.1.2024
+#update 16.4.2025 - repair data type text uint8 to float32
 
 import argparse
 import logging
@@ -11,6 +12,7 @@ import os
 import pydicom
 from PIL import Image, ImageDraw, ImageFont
 import sys
+import traceback
 
 def arg_coords(s):
     #Function defines the type of the specified coordinate arguments in cmd.
@@ -40,7 +42,10 @@ def draw2dcm(file, cord, text):
     ds = pydicom.dcmread(file)
     
     #get the pixel information into a numpy array
-    dcmdata = ds.pixel_array
+    dcmdata = ds.pixel_array.astype(np.uint16)
+    print("Datový typ pixel_array:", dcmdata.dtype)
+    #get maximal pixel value
+    maxpixelvalue = (2 ** ds.BitsAllocated) - 1
 
     #generate new SOPInstanceUID, if SOPInstanceUID not change, PACS do not accept edited dicom picture if original picture is still saved in pacs
     ds[0x08,0x18].value = pydicom.uid.generate_uid()
@@ -66,13 +71,15 @@ def draw2dcm(file, cord, text):
     draw.text((0, 0), text, font=font, fill="white")
 
     #image to numpy
-    nptext = np.array(image)
+    nptext = np.array(image).astype(np.float32)
     
     #insert image with new text to dicom image data
     for x in range(len(nptext[0])):
         for y in range(len(nptext)):
             if nptext[y][x][0] != 0 : 
-                dcmdata[y+cord[1]][x+cord[0]] = nptext[y][x][0]*4000/255
+                value = int(nptext[y][x][0] * maxpixelvalue / 255 + 0.5)
+                value = min(max(value, 0), maxpixelvalue)
+                dcmdata[y + cord[1], x + cord[0]] = value
             else: dcmdata[y+cord[1]][x+cord[0]] = 0000      
 
     #write pixel data to dicom
@@ -143,9 +150,15 @@ if __name__ == "__main__":
     args = argParser.parse_args()
     
     ### Program running
-    file = path_to_file(args.file)
-    cord = coordinates(args.cord)
-    text = text_input(args.text)
-    draw2dcm(file, cord, text)
-    
+    ### Program running
+    try:
+        file = path_to_file(args.file)
+        cord = coordinates(args.cord)
+        text = text_input(args.text)
+        draw2dcm(file, cord, text)
+    except Exception as e:
+        log_error(f"Unexpected error: {e}")
+        log_error(traceback.format_exc())  # Save traceback to log
+        end_of_program(f"An unexpected error occurred while processing the DICOM file. \n {traceback.format_exc()}", "error")
+       
     end_of_program()
