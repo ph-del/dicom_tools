@@ -37,6 +37,21 @@ Program makes copy of original dicom file and overwrite specified area of pixels
 Program logs its activity to a file pixel_edit.log that is created in the directory which the program was started from.\
 The marker font size is automatically adjusted to the width of the selected area according to the coordinates.
 
+### updates
+#### 16.4.2025  
+**Fix:**  
+Prevent OverflowError when writing text to DICOM pixel data  
+**Summary:**  
+Resolved an OverflowError caused by pixel intensity scaling exceeding the uint8 range during text insertion.  
+
+**Fix:**  
+- Cast text pixel values to np.float32 before scaling.  
+- Clamp the scaled values to [0, max_pixel_value] based on BitsAllocated.  
+- Convert to int before assigning to the uint16 DICOM pixel array.  
+
+**Impact:**  
+Ensures compatibility across DICOM images with varying bit depths (e.g. 8-bit, 12-bit, 16-bit) and avoids data corruption or crashes.  
+
 ### todo
 this program suits my purposes but could be improved:
 - customizable font size

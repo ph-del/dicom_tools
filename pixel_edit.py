@@ -3,7 +3,19 @@
 #Program makes copy of original dicom file and overwrite specified area of pixels with new text mark and save new dicom file to current working directory. 
 #pavel.honz@gmail.com
 #10.1.2024
-#update 16.4.2025 - repair data type text uint8 to float32
+
+#update 16.4.2025 
+# Fix: Prevent OverflowError when writing text to DICOM pixel data
+# Summary:
+# Resolved an OverflowError caused by pixel intensity scaling exceeding the uint8 range during text insertion.
+
+# Fix:
+# Cast text pixel values to np.float32 before scaling.
+# Clamp the scaled values to [0, max_pixel_value] based on BitsAllocated.
+# Convert to int before assigning to the uint16 DICOM pixel array.
+
+# Impact:
+# Ensures compatibility across DICOM images with varying bit depths (e.g. 8-bit, 12-bit, 16-bit) and avoids data corruption or crashes.
 
 import argparse
 import logging
